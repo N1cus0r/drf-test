@@ -21,7 +21,7 @@ class DoctorViewSet(ModelViewSet):
 
 class PatientListCreateView(ListCreateAPIView):
     serializer_class = PatientSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     
     def get_queryset(self):
         return Patient.objects.prefetch_related('doctor').filter(doctor=self.kwargs.get('doctor_id'))
@@ -44,7 +44,7 @@ class PatientListCreateView(ListCreateAPIView):
 class PatientDetailReportCreateView(ListCreateAPIView):
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
         try:
@@ -87,7 +87,7 @@ class PatientDetailReportCreateView(ListCreateAPIView):
 class PatientRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientDetailSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get_patient(self, request, *args, **kwargs):
         try:
